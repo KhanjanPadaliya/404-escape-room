@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Wrong Column",
+    "description": "<p>Query selects 'firstname' but the column is named 'first_name'.</p><p><strong>Task:</strong> What's the correct column name?</p>",
+    "code": "SELECT firstname FROM users;",
+    "acceptedAnswers": ["first_name"],
+    "hints": [
+      "Check the column naming convention",
+      "Use underscore: first_name"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 2,
+    "name": "WHERE Condition",
+    "description": "<p>Query returns all rows instead of filtering.</p><p><strong>Task:</strong> Add WHERE age > 18 to filter results</p>",
+    "code": "SELECT * FROM users;",
+    "acceptedAnswers": ["WHERE age > 18", "WHERE"],
+    "hints": [
+      "WHERE clause filters rows",
+      "Add: WHERE age > 18"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 3,
+    "name": "JOIN Mismatch",
+    "description": "<p>JOIN doesn't specify the relationship between tables.</p><p><strong>Task:</strong> Add ON clause: orders.user_id = users.id</p>",
+    "code": "SELECT * FROM users\nJOIN orders;",
+    "acceptedAnswers": ["ON orders.user_id = users.id", "ON"],
+    "hints": [
+      "JOIN needs ON clause to specify relationship",
+      "Add: ON orders.user_id = users.id"
+    ],
+    "maxScore": 110
+  },
+  {
+    "id": 4,
+    "name": "GROUP BY Missing",
+    "description": "<p>Aggregate function without GROUP BY causes error.</p><p><strong>Task:</strong> Add GROUP BY category</p>",
+    "code": "SELECT category, COUNT(*) FROM products;",
+    "acceptedAnswers": ["GROUP BY category", "GROUP BY"],
+    "hints": [
+      "COUNT() with non-aggregated columns needs GROUP BY",
+      "Add: GROUP BY category"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 5,
+    "name": "NULL Logic",
+    "description": "<p>Checking for NULL with = operator doesn't work.</p><p><strong>Task:</strong> What operator checks for NULL values?</p>",
+    "code": "SELECT * FROM users WHERE email = NULL;",
+    "acceptedAnswers": ["IS NULL", "IS", "email IS NULL"],
+    "hints": [
+      "= NULL doesn't work for NULL checks",
+      "Use: WHERE email IS NULL"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 6,
+    "name": "Subquery Parentheses",
+    "description": "<p>Subquery is missing parentheses.</p><p><strong>Task:</strong> Wrap the subquery in parentheses</p>",
+    "code": "SELECT * FROM users\nWHERE id IN SELECT user_id FROM orders;",
+    "acceptedAnswers": ["(SELECT user_id FROM orders)", "()"],
+    "hints": [
+      "Subqueries must be wrapped in parentheses",
+      "Fix: IN (SELECT user_id FROM orders)"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 7,
+    "name": "ORDER BY Direction",
+    "description": "<p>Results should be sorted newest first but are oldest first.</p><p><strong>Task:</strong> Add DESC to ORDER BY created_at</p>",
+    "code": "SELECT * FROM posts\nORDER BY created_at;",
+    "acceptedAnswers": ["DESC", "ORDER BY created_at DESC"],
+    "hints": [
+      "ORDER BY defaults to ASC (ascending)",
+      "Add DESC for descending: ORDER BY created_at DESC"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 8,
+    "name": "LIMIT Clause",
+    "description": "<p>Query returns all million rows instead of first 10.</p><p><strong>Task:</strong> Add LIMIT 10</p>",
+    "code": "SELECT * FROM logs\nORDER BY timestamp DESC;",
+    "acceptedAnswers": ["LIMIT 10", "LIMIT"],
+    "hints": [
+      "LIMIT restricts number of returned rows",
+      "Add: LIMIT 10 at the end"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 9,
+    "name": "Aggregate HAVING",
+    "description": "<p>Filtering aggregated results with WHERE doesn't work.</p><p><strong>Task:</strong> Replace WHERE with HAVING for COUNT > 5</p>",
+    "code": "SELECT category, COUNT(*) as total\nFROM products\nGROUP BY category\nWHERE COUNT(*) > 5;",
+    "acceptedAnswers": ["HAVING", "HAVING COUNT(*) > 5"],
+    "hints": [
+      "WHERE filters before grouping, HAVING filters after",
+      "Use HAVING for aggregate conditions"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 10,
+    "name": "DISTINCT Duplicates",
+    "description": "<p>Query returns duplicate values.</p><p><strong>Task:</strong> Add DISTINCT to get unique categories</p>",
+    "code": "SELECT category FROM products;",
+    "acceptedAnswers": ["DISTINCT", "SELECT DISTINCT"],
+    "hints": [
+      "DISTINCT removes duplicate rows",
+      "Use: SELECT DISTINCT category"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 11,
+    "name": "String Comparison",
+    "description": "<p>Case-sensitive search misses 'ADMIN' and 'Admin'.</p><p><strong>Task:</strong> What function makes comparison case-insensitive?</p>",
+    "code": "SELECT * FROM users WHERE role = 'admin';",
+    "acceptedAnswers": ["LOWER", "UPPER", "LOWER(role)"],
+    "hints": [
+      "Use LOWER() or UPPER() for case-insensitive comparison",
+      "Example: WHERE LOWER(role) = 'admin'"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 12,
+    "name": "LEFT JOIN",
+    "description": "<p>INNER JOIN excludes users without orders.</p><p><strong>Task:</strong> What JOIN type includes all users even without matches?</p>",
+    "code": "SELECT users.name, orders.id\nFROM users\nINNER JOIN orders ON users.id = orders.user_id;",
+    "acceptedAnswers": ["LEFT JOIN", "LEFT OUTER JOIN"],
+    "hints": [
+      "INNER JOIN only shows matching rows",
+      "LEFT JOIN includes all left table rows"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 13,
+    "name": "COUNT vs COUNT(*)",
+    "description": "<p>COUNT(column) excludes NULL values unexpectedly.</p><p><strong>Task:</strong> What counts ALL rows including NULLs?</p>",
+    "code": "SELECT COUNT(email) FROM users;",
+    "acceptedAnswers": ["COUNT(*)", "COUNT(*)"],
+    "hints": [
+      "COUNT(column) ignores NULLs",
+      "COUNT(*) counts all rows"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 14,
+    "name": "Date Comparison",
+    "description": "<p>Comparing dates as strings gives wrong results.</p><p><strong>Task:</strong> What function extracts the date part for comparison?</p>",
+    "code": "SELECT * FROM events\nWHERE created_at = '2024-01-15';",
+    "acceptedAnswers": ["DATE", "DATE(created_at)", "CAST"],
+    "hints": [
+      "Datetime columns include time, so = fails",
+      "Use DATE(created_at) or BETWEEN"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 15,
+    "name": "UNION vs UNION ALL",
+    "description": "<p>UNION removes duplicate rows but query needs all rows.</p><p><strong>Task:</strong> What keeps duplicates when combining queries?</p>",
+    "code": "SELECT name FROM customers\nUNION\nSELECT name FROM suppliers;",
+    "acceptedAnswers": ["UNION ALL"],
+    "hints": [
+      "UNION removes duplicates (slower)",
+      "UNION ALL keeps duplicates (faster)"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 16,
+    "name": "Index Performance",
+    "description": "<p>Query is slow because it's not using an index.</p><p><strong>Task:</strong> What SQL command creates an index on the email column?</p>",
+    "code": "-- Slow query\nSELECT * FROM users WHERE email = 'test@example.com';",
+    "acceptedAnswers": ["CREATE INDEX", "INDEX"],
+    "hints": [
+      "Indexes speed up searches on columns",
+      "Use: CREATE INDEX idx_email ON users(email)"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 17,
+    "name": "Transaction Control",
+    "description": "<p>Multiple queries should be atomic but aren't.</p><p><strong>Task:</strong> What command starts a transaction?</p>",
+    "code": "UPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;",
+    "acceptedAnswers": ["BEGIN", "START TRANSACTION", "BEGIN TRANSACTION"],
+    "hints": [
+      "Transactions ensure all-or-nothing execution",
+      "Use: BEGIN or START TRANSACTION"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 18,
+    "name": "Injection Prevention",
+    "description": "<p>Query is vulnerable to SQL injection.</p><p><strong>Task:</strong> What should replace direct string concatenation?</p>",
+    "code": "query = \"SELECT * FROM users WHERE name = '\" + userInput + \"'\";",
+    "acceptedAnswers": ["prepared statement", "parameterized", "?", "placeholder"],
+    "hints": [
+      "Never concatenate user input into SQL",
+      "Use prepared statements/parameterized queries"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 19,
+    "name": "CASE Expression",
+    "description": "<p>Need conditional logic in SELECT but using IF (MySQL-specific).</p><p><strong>Task:</strong> What standard SQL keyword provides conditional logic?</p>",
+    "code": "SELECT name,\n       IF(age >= 18, 'Adult', 'Minor') as category\nFROM users;",
+    "acceptedAnswers": ["CASE", "CASE WHEN"],
+    "hints": [
+      "CASE is standard SQL for conditions",
+      "Syntax: CASE WHEN age >= 18 THEN 'Adult' ELSE 'Minor' END"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 20,
+    "name": "Window Function",
+    "description": "<p>Need row numbers within groups but GROUP BY loses detail.</p><p><strong>Task:</strong> What clause defines the partition for window functions?</p>",
+    "code": "SELECT name, category,\n       ROW_NUMBER() OVER (ORDER BY name) as row_num\nFROM products;",
+    "acceptedAnswers": ["PARTITION BY", "PARTITION BY category"],
+    "hints": [
+      "Window functions can partition data",
+      "Add: PARTITION BY category before ORDER BY"
+    ],
+    "maxScore": 200
+  }
+]

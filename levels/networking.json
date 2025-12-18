@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Status Code Confusion",
+    "description": "<p>A page not found returns status 500 instead of the correct code.</p><p><strong>Task:</strong> What status code means 'Not Found'?</p>",
+    "code": "HTTP/1.1 500 Internal Server Error\n\nThe requested page does not exist.",
+    "acceptedAnswers": ["404", "404 Not Found"],
+    "hints": [
+      "500 means server error, not client error",
+      "404 is the standard 'Not Found' code"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 2,
+    "name": "Wrong HTTP Method",
+    "description": "<p>A form submission uses GET instead of POST.</p><p><strong>Task:</strong> What method should be used for data submission?</p>",
+    "code": "GET /api/users HTTP/1.1\nContent-Type: application/json\n\n{\"name\": \"Alice\"}",
+    "acceptedAnswers": ["POST"],
+    "hints": [
+      "GET is for retrieving data, not sending",
+      "Use POST for creating/submitting data"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 3,
+    "name": "Missing Content-Type",
+    "description": "<p>Server can't parse JSON because Content-Type header is missing.</p><p><strong>Task:</strong> What header specifies JSON data?</p>",
+    "code": "POST /api/data HTTP/1.1\n\n{\"key\": \"value\"}",
+    "acceptedAnswers": ["Content-Type: application/json", "Content-Type", "application/json"],
+    "hints": [
+      "Content-Type tells server the data format",
+      "Use: Content-Type: application/json"
+    ],
+    "maxScore": 110
+  },
+  {
+    "id": 4,
+    "name": "Unauthorized Access",
+    "description": "<p>API returns 401 but should return 403.</p><p><strong>Task:</strong> What status code means 'Forbidden' (authenticated but not allowed)?</p>",
+    "code": "HTTP/1.1 401 Unauthorized\n\nYou don't have permission to access this resource.",
+    "acceptedAnswers": ["403", "403 Forbidden"],
+    "hints": [
+      "401 = not authenticated (need to login)",
+      "403 = authenticated but forbidden (no permission)"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 5,
+    "name": "Cache Control",
+    "description": "<p>Static assets are being re-downloaded on every request.</p><p><strong>Task:</strong> What header controls browser caching?</p>",
+    "code": "HTTP/1.1 200 OK\nContent-Type: image/png\n\n[image data]",
+    "acceptedAnswers": ["Cache-Control", "Cache-Control: max-age"],
+    "hints": [
+      "Caching reduces bandwidth and improves speed",
+      "Use: Cache-Control: max-age=3600"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 6,
+    "name": "Cookie vs Session",
+    "description": "<p>Sensitive data is stored in cookies (insecure).</p><p><strong>Task:</strong> Where should sensitive session data be stored?</p>",
+    "code": "Set-Cookie: user_password=secret123",
+    "acceptedAnswers": ["server", "server-side", "session", "backend"],
+    "hints": [
+      "Cookies are client-side and visible",
+      "Store sensitive data server-side in sessions"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 7,
+    "name": "CORS Error",
+    "description": "<p>Browser blocks API request due to CORS policy.</p><p><strong>Task:</strong> What header allows cross-origin requests?</p>",
+    "code": "// Frontend: fetch('https://api.example.com/data')\n// Error: CORS policy blocks request",
+    "acceptedAnswers": ["Access-Control-Allow-Origin", "CORS"],
+    "hints": [
+      "CORS (Cross-Origin Resource Sharing) is a security feature",
+      "Server must send: Access-Control-Allow-Origin header"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 8,
+    "name": "Redirect Loop",
+    "description": "<p>Page A redirects to Page B, which redirects back to Page A.</p><p><strong>Task:</strong> What status code indicates a redirect?</p>",
+    "code": "HTTP/1.1 200 OK\nLocation: /page-b",
+    "acceptedAnswers": ["301", "302", "3xx", "redirect"],
+    "hints": [
+      "200 means success, not redirect",
+      "Use 301 (permanent) or 302 (temporary) redirect"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 9,
+    "name": "REST Method Mismatch",
+    "description": "<p>Deleting a resource uses POST instead of proper REST method.</p><p><strong>Task:</strong> What HTTP method should delete a resource?</p>",
+    "code": "POST /api/users/123/delete HTTP/1.1",
+    "acceptedAnswers": ["DELETE"],
+    "hints": [
+      "REST uses semantic HTTP methods",
+      "DELETE method: DELETE /api/users/123"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 10,
+    "name": "API Versioning",
+    "description": "<p>Breaking API changes affect all clients.</p><p><strong>Task:</strong> Where should version info go in the URL?</p>",
+    "code": "GET /api/users HTTP/1.1",
+    "acceptedAnswers": ["/api/v1/", "v1", "version"],
+    "hints": [
+      "Version APIs to maintain backwards compatibility",
+      "Common: /api/v1/users or /api/v2/users"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 11,
+    "name": "Request Timeout",
+    "description": "<p>Long-running request hangs indefinitely.</p><p><strong>Task:</strong> What HTTP header sets maximum wait time?</p>",
+    "code": "GET /api/slow-operation HTTP/1.1",
+    "acceptedAnswers": ["timeout", "keep-alive", "Keep-Alive"],
+    "hints": [
+      "Clients should set timeout to avoid hanging",
+      "Server can use Keep-Alive header for timeout hints"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 12,
+    "name": "Content Encoding",
+    "description": "<p>Large responses aren't compressed, wasting bandwidth.</p><p><strong>Task:</strong> What encoding compresses HTTP responses?</p>",
+    "code": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n[large HTML]",
+    "acceptedAnswers": ["gzip", "Content-Encoding: gzip", "compression"],
+    "hints": [
+      "Compression reduces transfer size",
+      "Common: Content-Encoding: gzip"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 13,
+    "name": "Rate Limiting",
+    "description": "<p>API is being abused with too many requests.</p><p><strong>Task:</strong> What status code indicates rate limit exceeded?</p>",
+    "code": "HTTP/1.1 200 OK\n\nToo many requests",
+    "acceptedAnswers": ["429", "429 Too Many Requests"],
+    "hints": [
+      "Rate limiting protects APIs from abuse",
+      "Use: 429 Too Many Requests"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 14,
+    "name": "ETag Caching",
+    "description": "<p>Server sends full response even when client has cached version.</p><p><strong>Task:</strong> What header identifies resource version?</p>",
+    "code": "HTTP/1.1 200 OK\nContent-Type: application/json\n\n{data}",
+    "acceptedAnswers": ["ETag", "If-None-Match"],
+    "hints": [
+      "ETag is a version identifier",
+      "Client sends If-None-Match, server returns 304 if unchanged"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 15,
+    "name": "Preflight Request",
+    "description": "<p>CORS preflight request fails because OPTIONS method isn't handled.</p><p><strong>Task:</strong> What HTTP method is used for CORS preflight?</p>",
+    "code": "// Browser sends preflight before actual request\n// Server doesn't handle it",
+    "acceptedAnswers": ["OPTIONS"],
+    "hints": [
+      "Browsers send OPTIONS request before certain CORS requests",
+      "Server must handle OPTIONS method"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 16,
+    "name": "Authentication Header",
+    "description": "<p>API requires authentication but header format is wrong.</p><p><strong>Task:</strong> What header sends authentication credentials?</p>",
+    "code": "GET /api/protected HTTP/1.1\nAuth: token123",
+    "acceptedAnswers": ["Authorization", "Authorization: Bearer"],
+    "hints": [
+      "Standard header for auth is Authorization",
+      "Format: Authorization: Bearer <token>"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 17,
+    "name": "Idempotency",
+    "description": "<p>Multiple POST requests create duplicate resources.</p><p><strong>Task:</strong> What method is idempotent for updates?</p>",
+    "code": "POST /api/users/123 HTTP/1.1\n{\"name\": \"Updated\"}",
+    "acceptedAnswers": ["PUT", "PATCH"],
+    "hints": [
+      "POST is not idempotent (creates duplicates)",
+      "PUT and PATCH are idempotent for updates"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 18,
+    "name": "WebSocket Upgrade",
+    "description": "<p>Trying to establish WebSocket but missing upgrade header.</p><p><strong>Task:</strong> What header value requests protocol upgrade?</p>",
+    "code": "GET /ws HTTP/1.1\nConnection: Upgrade",
+    "acceptedAnswers": ["Upgrade: websocket", "websocket"],
+    "hints": [
+      "WebSocket starts as HTTP then upgrades",
+      "Need: Upgrade: websocket header"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 19,
+    "name": "Content Negotiation",
+    "description": "<p>Client wants JSON but server returns XML.</p><p><strong>Task:</strong> What request header specifies desired response format?</p>",
+    "code": "GET /api/data HTTP/1.1\n\n// Returns XML instead of JSON",
+    "acceptedAnswers": ["Accept", "Accept: application/json"],
+    "hints": [
+      "Content negotiation uses Accept header",
+      "Client sends: Accept: application/json"
+    ],
+    "maxScore": 200
+  },
+  {
+    "id": 20,
+    "name": "HTTP/2 Push",
+    "description": "<p>Page loads slowly despite HTTP/2 because server doesn't push resources.</p><p><strong>Task:</strong> What HTTP/2 feature proactively sends resources?</p>",
+    "code": "// HTML loads, then CSS/JS load sequentially\n// Could be faster with HTTP/2",
+    "acceptedAnswers": ["Server Push", "push", "HTTP/2 Push"],
+    "hints": [
+      "HTTP/2 can push resources before client requests them",
+      "Called 'Server Push' or 'HTTP/2 Push'"
+    ],
+    "maxScore": 200
+  }
+]

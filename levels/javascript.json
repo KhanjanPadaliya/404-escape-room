@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Undefined Function",
+    "description": "<p>A button's onclick handler references a function that doesn't exist.</p><p><strong>Task:</strong> What's the correct function name? (Check the actual definition)</p>",
+    "code": "function handleClick() {\n  alert('Clicked!');\n}\n\n<button onclick=\"handleClik()\">Click</button>",
+    "acceptedAnswers": ["handleClick", "handleClick()"],
+    "hints": [
+      "Compare the function name to the onclick call",
+      "There's a typo in 'handleClik'"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 2,
+    "name": "Scope Bug",
+    "description": "<p>Variable 'count' is not accessible outside the if block.</p><p><strong>Task:</strong> What keyword should replace 'let' to make it function-scoped?</p>",
+    "code": "function test() {\n  if (true) {\n    let count = 5;\n  }\n  console.log(count); // Error\n}",
+    "acceptedAnswers": ["var"],
+    "hints": [
+      "let and const are block-scoped",
+      "var is function-scoped"
+    ],
+    "maxScore": 110
+  },
+  {
+    "id": 3,
+    "name": "Event Bubbling",
+    "description": "<p>Clicking a button triggers both button and parent div handlers.</p><p><strong>Task:</strong> What method stops event propagation?</p>",
+    "code": "button.addEventListener('click', (e) => {\n  // Stop bubbling here\n  doSomething();\n});",
+    "acceptedAnswers": ["stopPropagation", "e.stopPropagation()", "event.stopPropagation()"],
+    "hints": [
+      "Events bubble up through parent elements by default",
+      "Use event.stopPropagation() to prevent this"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 4,
+    "name": "Async Timing",
+    "description": "<p>SetTimeout fires immediately instead of waiting.</p><p><strong>Task:</strong> What's wrong with the delay value?</p>",
+    "code": "setTimeout(function() {\n  console.log('Wait');\n}, '3000');",
+    "acceptedAnswers": ["3000", "number", "not a string"],
+    "hints": [
+      "setTimeout delay must be a number, not a string",
+      "Remove the quotes: 3000 instead of '3000'"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 5,
+    "name": "Promise Never Resolves",
+    "description": "<p>A promise never completes because resolve() is missing.</p><p><strong>Task:</strong> Add the missing resolve() call</p>",
+    "code": "new Promise((resolve, reject) => {\n  const data = fetchData();\n  // Missing resolve\n});",
+    "acceptedAnswers": ["resolve(data)", "resolve"],
+    "hints": [
+      "Promises must call resolve() to complete successfully",
+      "Add resolve(data) after fetching"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 6,
+    "name": "Callback Hell",
+    "description": "<p>A callback is never called, breaking the chain.</p><p><strong>Task:</strong> What's missing after getting the result?</p>",
+    "code": "function getData(callback) {\n  fetch('/api').then(res => {\n    const data = res.json();\n    // Missing callback\n  });\n}",
+    "acceptedAnswers": ["callback(data)", "callback"],
+    "hints": [
+      "After processing data, you must invoke the callback",
+      "Add callback(data)"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 7,
+    "name": "Closure Trap",
+    "description": "<p>All buttons log '5' instead of their index.</p><p><strong>Task:</strong> What causes this? (hint: var vs let)</p>",
+    "code": "for (var i = 0; i < 5; i++) {\n  buttons[i].onclick = function() {\n    console.log(i);\n  };\n}",
+    "acceptedAnswers": ["let", "var", "closure", "let i"],
+    "hints": [
+      "var is function-scoped, so all closures share the same i",
+      "Replace var with let for block scope"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 8,
+    "name": "Comparison Bug",
+    "description": "<p>An if condition using == gives unexpected results.</p><p><strong>Task:</strong> What operator should be used for strict equality?</p>",
+    "code": "if ('5' == 5) {\n  // This is true but shouldn't be\n}",
+    "acceptedAnswers": ["===", "strict equality"],
+    "hints": [
+      "== does type coercion, === does not",
+      "Use === for strict equality checks"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 9,
+    "name": "DOM Ready",
+    "description": "<p>Script runs before DOM is loaded, causing null errors.</p><p><strong>Task:</strong> What event should we listen for?</p>",
+    "code": "// Script runs immediately\nconst btn = document.querySelector('#btn');\nbtn.addEventListener('click', fn);",
+    "acceptedAnswers": ["DOMContentLoaded", "load"],
+    "hints": [
+      "DOM elements don't exist until page is loaded",
+      "Use DOMContentLoaded event or defer attribute"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 10,
+    "name": "Array Mutation",
+    "description": "<p>Sorting an array mutates the original unexpectedly.</p><p><strong>Task:</strong> How to sort without mutating? (Hint: make a copy first)</p>",
+    "code": "const nums = [3, 1, 2];\nconst sorted = nums.sort();\n// nums is now also sorted!",
+    "acceptedAnswers": ["[...nums].sort()", "slice", "spread"],
+    "hints": [
+      "sort() mutates the original array",
+      "Use spread operator: [...nums].sort() or nums.slice().sort()"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 11,
+    "name": "This Context",
+    "description": "<p>Inside an arrow function, 'this' doesn't refer to the object.</p><p><strong>Task:</strong> What type of function preserves 'this' context?</p>",
+    "code": "const obj = {\n  name: 'Test',\n  greet: () => {\n    console.log(this.name); // undefined\n  }\n};",
+    "acceptedAnswers": ["regular function", "function()", "method"],
+    "hints": [
+      "Arrow functions don't have their own 'this'",
+      "Use regular function syntax: greet: function() {}"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 12,
+    "name": "Async/Await Error",
+    "description": "<p>Async function doesn't wait for promise to resolve.</p><p><strong>Task:</strong> What keyword is missing before the fetch call?</p>",
+    "code": "async function getData() {\n  const response = fetch('/api');\n  const data = response.json();\n}",
+    "acceptedAnswers": ["await"],
+    "hints": [
+      "Inside async functions, use await for promises",
+      "Add: const response = await fetch('/api')"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 13,
+    "name": "Type Coercion",
+    "description": "<p>Addition gives unexpected string concatenation.</p><p><strong>Task:</strong> How to ensure numeric addition? (Convert first)</p>",
+    "code": "const result = '5' + 3; // '53' not 8",
+    "acceptedAnswers": ["Number", "parseInt", "parseFloat", "+"],
+    "hints": [
+      "+ operator concatenates if one operand is a string",
+      "Convert with Number(), parseInt(), or unary +"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 14,
+    "name": "Event Delegation",
+    "description": "<p>Dynamically added list items don't trigger click events.</p><p><strong>Task:</strong> Where should the listener be attached?</p>",
+    "code": "// Items added later don't have listeners\ndocument.querySelectorAll('li').forEach(item => {\n  item.addEventListener('click', handler);\n});",
+    "acceptedAnswers": ["parent", "ul", "event delegation"],
+    "hints": [
+      "Listeners on existing elements don't apply to new ones",
+      "Attach listener to parent (ul) and use event.target"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 15,
+    "name": "Memory Leak",
+    "description": "<p>SetInterval creates a memory leak.</p><p><strong>Task:</strong> What function stops the interval?</p>",
+    "code": "const intervalId = setInterval(() => {\n  updateUI();\n}, 1000);\n// Never stops!",
+    "acceptedAnswers": ["clearInterval", "clearInterval(intervalId)"],
+    "hints": [
+      "setInterval runs forever unless cleared",
+      "Use clearInterval(intervalId) to stop it"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 16,
+    "name": "Destructuring Bug",
+    "description": "<p>Object destructuring tries to use a non-existent property.</p><p><strong>Task:</strong> Provide a default value in the destructuring</p>",
+    "code": "const { name } = user; // user.name is undefined",
+    "acceptedAnswers": ["default", "= 'default'", "name = "],
+    "hints": [
+      "Destructuring can have default values",
+      "Syntax: const { name = 'default' } = user"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 17,
+    "name": "Shallow Copy",
+    "description": "<p>Copying an object doesn't copy nested objects.</p><p><strong>Task:</strong> What creates a deep copy? (Hint: JSON method)</p>",
+    "code": "const copy = { ...original };\n// Nested objects still share reference",
+    "acceptedAnswers": ["JSON.parse(JSON.stringify", "structuredClone", "deep copy"],
+    "hints": [
+      "Spread operator creates shallow copy",
+      "Use JSON.parse(JSON.stringify(obj)) for deep copy"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 18,
+    "name": "Debounce Missing",
+    "description": "<p>A search input fires too many API calls.</p><p><strong>Task:</strong> What technique delays execution until user stops typing?</p>",
+    "code": "input.addEventListener('input', () => {\n  searchAPI(input.value); // Called on every keystroke!\n});",
+    "acceptedAnswers": ["debounce", "debouncing"],
+    "hints": [
+      "Debouncing delays execution until activity stops",
+      "The answer is 'debounce' or 'debouncing'"
+    ],
+    "maxScore": 200
+  },
+  {
+    "id": 19,
+    "name": "Optional Chaining",
+    "description": "<p>Code crashes when accessing nested properties that might not exist.</p><p><strong>Task:</strong> What operator safely accesses nested properties?</p>",
+    "code": "const city = user.address.city; // Crashes if address is null",
+    "acceptedAnswers": ["?.", "optional chaining"],
+    "hints": [
+      "Optional chaining prevents errors on null/undefined",
+      "Use ?. operator: user.address?.city"
+    ],
+    "maxScore": 200
+  },
+  {
+    "id": 20,
+    "name": "Module Import",
+    "description": "<p>ES6 module import is failing.</p><p><strong>Task:</strong> What's missing from the script tag to enable modules?</p>",
+    "code": "<script src=\"app.js\"></script>\n// import { func } from './module.js';",
+    "acceptedAnswers": ["type=\"module\"", "module"],
+    "hints": [
+      "Modules require special script tag attribute",
+      "Add: <script type=\"module\" src=\"app.js\"></script>"
+    ],
+    "maxScore": 200
+  }
+]

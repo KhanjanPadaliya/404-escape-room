@@ -1,0 +1,13 @@
+{
+  "name": "404-escape-room",
+  "version": "1.0.0",
+  "description": "![Status](https://img.shields.io/badge/Status-Production%20Ready-success)\r ![Languages](https://img.shields.io/badge/Languages-6-blue)\r ![Levels](https://img.shields.io/badge/Total%20Levels-120-orange)\r ![License](https://img.shields.io/badge/License-MIT-green)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

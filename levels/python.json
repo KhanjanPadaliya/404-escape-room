@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Indentation Error",
+    "description": "<p>Python code fails due to incorrect indentation.</p><p><strong>Task:</strong> How many spaces should the print statement be indented?</p>",
+    "code": "def greet():\nprint('Hello')",
+    "acceptedAnswers": ["4", "4 spaces", "indent"],
+    "hints": [
+      "Python uses indentation to define code blocks",
+      "Standard is 4 spaces"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 2,
+    "name": "Variable Scope",
+    "description": "<p>A variable defined inside a function isn't accessible outside.</p><p><strong>Task:</strong> What keyword makes a variable global?</p>",
+    "code": "def set_value():\n    value = 10\n\nprint(value)  # NameError",
+    "acceptedAnswers": ["global"],
+    "hints": [
+      "Variables in functions are local by default",
+      "Use 'global' keyword to make it global"
+    ],
+    "maxScore": 110
+  },
+  {
+    "id": 3,
+    "name": "List vs Tuple",
+    "description": "<p>Code tries to modify a tuple which is immutable.</p><p><strong>Task:</strong> What data structure should be used instead for mutable sequences?</p>",
+    "code": "numbers = (1, 2, 3)\nnumbers[0] = 10  # TypeError",
+    "acceptedAnswers": ["list", "[]"],
+    "hints": [
+      "Tuples use () and are immutable",
+      "Lists use [] and are mutable"
+    ],
+    "maxScore": 110
+  },
+  {
+    "id": 4,
+    "name": "Return Statement",
+    "description": "<p>A function doesn't return a value, causing None.</p><p><strong>Task:</strong> What keyword returns a value from a function?</p>",
+    "code": "def calculate(x):\n    result = x * 2\n    # Missing return",
+    "acceptedAnswers": ["return", "return result"],
+    "hints": [
+      "Functions return None by default if no return statement",
+      "Use 'return result' to return the value"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 5,
+    "name": "Dictionary KeyError",
+    "description": "<p>Accessing a non-existent dictionary key raises KeyError.</p><p><strong>Task:</strong> What dictionary method safely returns None if key doesn't exist?</p>",
+    "code": "user = {'name': 'Alice'}\nage = user['age']  # KeyError",
+    "acceptedAnswers": ["get", ".get()", "user.get('age')"],
+    "hints": [
+      "Bracket notation raises KeyError if key missing",
+      "Use .get() method: user.get('age')"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 6,
+    "name": "Loop Logic Error",
+    "description": "<p>A for loop should iterate 10 times but only goes 9 times.</p><p><strong>Task:</strong> What should the range be to iterate 10 times?</p>",
+    "code": "for i in range(9):\n    print(i)",
+    "acceptedAnswers": ["range(10)", "10"],
+    "hints": [
+      "range(9) gives 0-8 (9 iterations)",
+      "range(10) gives 0-9 (10 iterations)"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 7,
+    "name": "Exception Handling",
+    "description": "<p>Code crashes instead of handling errors gracefully.</p><p><strong>Task:</strong> What keyword starts an exception handling block?</p>",
+    "code": "# Need error handling\nresult = 10 / 0  # ZeroDivisionError",
+    "acceptedAnswers": ["try", "try-except"],
+    "hints": [
+      "Python uses try-except for error handling",
+      "Wrap risky code in 'try' block"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 8,
+    "name": "Mutable Default Argument",
+    "description": "<p>A function with a mutable default argument shares state between calls.</p><p><strong>Task:</strong> What should replace [] as the default?</p>",
+    "code": "def add_item(item, items=[]):\n    items.append(item)\n    return items",
+    "acceptedAnswers": ["None", "items=None"],
+    "hints": [
+      "Mutable defaults are created once and shared",
+      "Use None as default, then: if items is None: items = []"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 9,
+    "name": "String Immutability",
+    "description": "<p>Code tries to modify a string character, which fails.</p><p><strong>Task:</strong> Strings are immutable. What method creates a new string with replacements?</p>",
+    "code": "text = 'Hello'\ntext[0] = 'h'  # TypeError",
+    "acceptedAnswers": ["replace", ".replace()", "text.replace"],
+    "hints": [
+      "Strings cannot be modified in-place",
+      "Use .replace() method to create a new string"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 10,
+    "name": "File Handling",
+    "description": "<p>A file is opened but never closed, causing resource leak.</p><p><strong>Task:</strong> What statement ensures file is automatically closed?</p>",
+    "code": "file = open('data.txt', 'r')\ndata = file.read()\n# File never closed",
+    "acceptedAnswers": ["with", "with open"],
+    "hints": [
+      "Always close files after use",
+      "Use 'with open()' context manager for automatic closing"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 11,
+    "name": "List Comprehension",
+    "description": "<p>Inefficient loop can be replaced with list comprehension.</p><p><strong>Task:</strong> Convert this to list comprehension syntax</p>",
+    "code": "squares = []\nfor i in range(5):\n    squares.append(i**2)",
+    "acceptedAnswers": ["[i**2 for i in range(5)]", "list comprehension"],
+    "hints": [
+      "List comprehension is more Pythonic",
+      "Syntax: [expression for item in iterable]"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 12,
+    "name": "Import Error",
+    "description": "<p>Module import is failing due to incorrect syntax.</p><p><strong>Task:</strong> What keyword imports specific functions from a module?</p>",
+    "code": "import math.sqrt  # ImportError",
+    "acceptedAnswers": ["from", "from math import"],
+    "hints": [
+      "You can't import specific functions with just 'import'",
+      "Use: from math import sqrt"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 13,
+    "name": "Boolean Logic",
+    "description": "<p>A condition uses = instead of ==.</p><p><strong>Task:</strong> What operator checks equality in Python?</p>",
+    "code": "if x = 5:  # SyntaxError\n    print('Five')",
+    "acceptedAnswers": ["==", "x == 5"],
+    "hints": [
+      "= is assignment, not comparison",
+      "Use == for equality checks"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 14,
+    "name": "Class Constructor",
+    "description": "<p>A class is missing its constructor method.</p><p><strong>Task:</strong> What is the correct name for Python's constructor method?</p>",
+    "code": "class Person:\n    def init(self, name):\n        self.name = name",
+    "acceptedAnswers": ["__init__", "__init__(self"],
+    "hints": [
+      "Constructor method has double underscores",
+      "Correct: __init__(self, ...)"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 15,
+    "name": "Lambda Function",
+    "description": "<p>A one-line function can be simplified.</p><p><strong>Task:</strong> What keyword creates an anonymous function?</p>",
+    "code": "def add_one(x):\n    return x + 1\n\n# Can be: ??? x: x + 1",
+    "acceptedAnswers": ["lambda"],
+    "hints": [
+      "Anonymous functions use lambda keyword",
+      "Syntax: lambda x: x + 1"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 16,
+    "name": "String Formatting",
+    "description": "<p>Old-style string formatting should use f-strings.</p><p><strong>Task:</strong> What letter prefixes a format string literal?</p>",
+    "code": "name = 'Alice'\ngreeting = 'Hello, %s' % name",
+    "acceptedAnswers": ["f", "f-string", "f\""],
+    "hints": [
+      "Modern Python uses f-strings",
+      "Syntax: f'Hello, {name}'"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 17,
+    "name": "None Comparison",
+    "description": "<p>Checking for None uses wrong operator.</p><p><strong>Task:</strong> What operator should be used to check if something is None?</p>",
+    "code": "if value == None:  # Works but not idiomatic\n    pass",
+    "acceptedAnswers": ["is", "is None", "value is None"],
+    "hints": [
+      "None is a singleton object",
+      "Use 'is' not '==': if value is None"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 18,
+    "name": "Generator Expression",
+    "description": "<p>Creating a large list uses too much memory.</p><p><strong>Task:</strong> What syntax creates a generator instead (use parentheses)?</p>",
+    "code": "numbers = [i for i in range(1000000)]  # Uses lots of memory",
+    "acceptedAnswers": ["(i for i in range", "generator", "()"],
+    "hints": [
+      "Generators use () instead of []",
+      "Syntax: (i for i in range(1000000))"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 19,
+    "name": "Slice Notation",
+    "description": "<p>Reversing a list using a loop is inefficient.</p><p><strong>Task:</strong> What slice notation reverses a sequence?</p>",
+    "code": "numbers = [1, 2, 3, 4, 5]\nreversed_nums = []\nfor i in range(len(numbers)-1, -1, -1):\n    reversed_nums.append(numbers[i])",
+    "acceptedAnswers": ["[::-1]", "numbers[::-1]"],
+    "hints": [
+      "Python slicing can reverse with step=-1",
+      "Syntax: numbers[::-1]"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 20,
+    "name": "Decorator Syntax",
+    "description": "<p>A decorator is being applied incorrectly.</p><p><strong>Task:</strong> What symbol goes before a decorator name?</p>",
+    "code": "def my_decorator(func):\n    return func\n\nmy_decorator\ndef greet():\n    print('Hi')",
+    "acceptedAnswers": ["@", "@my_decorator"],
+    "hints": [
+      "Decorators use @ symbol",
+      "Syntax: @my_decorator above function"
+    ],
+    "maxScore": 200
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "id": 1,
+    "name": "Broken Link",
+    "description": "<p>The homepage link is broken. The href attribute is malformed.</p><p><strong>Task:</strong> Fix the anchor tag so it properly links to 'home.html'</p>",
+    "code": "<a hrf=\"home.html\">Go Home</a>",
+    "answer": "href",
+    "acceptedAnswers": ["<a href=\"home.html\">", "href="],
+    "hints": [
+      "Look at the attribute name carefully. Is it spelled correctly?",
+      "The correct attribute for links is 'href', not 'hrf'"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 2,
+    "name": "Unclosed Tag",
+    "description": "<p>A paragraph tag is not properly closed, breaking the DOM structure.</p><p><strong>Task:</strong> Add the missing closing tag</p>",
+    "code": "<div>\n  <p>Welcome to our site\n  <p>More content here</p>\n</div>",
+    "acceptedAnswers": ["</p>", "<p>Welcome to our site</p>"],
+    "hints": [
+      "The first paragraph is missing something at the end",
+      "Every opening <p> needs a closing </p>"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 3,
+    "name": "Comment Clue",
+    "description": "<p>There's a hidden clue in an HTML comment that reveals the correct ID for the button.</p><p><strong>Task:</strong> Set the button's ID to the value found in the comment</p>",
+    "code": "<!-- The button ID should be: submit-btn -->\n<button id=\"btn\">Submit</button>",
+    "acceptedAnswers": ["id=\"submit-btn\"", "submit-btn"],
+    "hints": [
+      "HTML comments are written as <!-- comment -->",
+      "The comment tells you exactly what the ID should be"
+    ],
+    "maxScore": 100
+  },
+  {
+    "id": 4,
+    "name": "Nesting Nightmare",
+    "description": "<p>The tags are incorrectly nested, violating HTML structure rules.</p><p><strong>Task:</strong> Fix the nesting order</p>",
+    "code": "<div><p><strong>Important</div></strong></p>",
+    "acceptedAnswers": ["<div><p><strong>Important</strong></p></div>", "</strong></p></div>"],
+    "hints": [
+      "Tags must close in the reverse order they were opened",
+      "Think: div opens first, so it should close last"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 5,
+    "name": "ARIA Label Missing",
+    "description": "<p>An icon button is not accessible because it lacks an aria-label.</p><p><strong>Task:</strong> Add aria-label=\"Close\" to the button</p>",
+    "code": "<button class=\"icon-btn\">✕</button>",
+    "acceptedAnswers": ["aria-label=\"Close\"", "aria-label='Close'"],
+    "hints": [
+      "Screen readers need text alternatives for icon buttons",
+      "Use the aria-label attribute to provide accessible text"
+    ],
+    "maxScore": 120
+  },
+  {
+    "id": 6,
+    "name": "Meta Mystery",
+    "description": "<p>The page isn't mobile-responsive because the viewport meta tag is incorrect.</p><p><strong>Task:</strong> Fix the viewport meta tag</p>",
+    "code": "<meta name=\"viewport\" content=\"width=device\">",
+    "acceptedAnswers": ["width=device-width", "initial-scale=1"],
+    "hints": [
+      "The width should be 'device-width', not just 'device'",
+      "Standard viewport: width=device-width, initial-scale=1"
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 7,
+    "name": "Form Action Error",
+    "description": "<p>The form submits to the wrong endpoint. It should POST to '/api/submit'.</p><p><strong>Task:</strong> Fix the form action and method</p>",
+    "code": "<form action=\"/submit\" method=\"get\">\n  <input type=\"text\" name=\"data\">\n  <button>Submit</button>\n</form>",
+    "acceptedAnswers": ["action=\"/api/submit\"", "method=\"post\""],
+    "mustInclude": ["/api/submit", "post"],
+    "hints": [
+      "The action needs '/api/' prefix and method should be POST",
+      "Forms for data submission typically use method=\"post\""
+    ],
+    "maxScore": 130
+  },
+  {
+    "id": 8,
+    "name": "Hidden Input",
+    "description": "<p>There's a required hidden field missing from the form that should contain userId='12345'.</p><p><strong>Task:</strong> Add the hidden input field</p>",
+    "code": "<form>\n  <input type=\"text\" name=\"username\">\n  <button>Submit</button>\n</form>",
+    "acceptedAnswers": ["<input type=\"hidden\"", "name=\"userId\"", "value=\"12345\""],
+    "mustInclude": ["hidden", "userId", "12345"],
+    "hints": [
+      "Hidden inputs use type=\"hidden\"",
+      "You need: <input type=\"hidden\" name=\"userId\" value=\"12345\">"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 9,
+    "name": "Table Header",
+    "description": "<p>The table is using <td> for headers instead of <th>, breaking accessibility.</p><p><strong>Task:</strong> Change the first row cells to use proper header tags</p>",
+    "code": "<table>\n  <tr>\n    <td>Name</td>\n    <td>Age</td>\n  </tr>\n  <tr>\n    <td>John</td>\n    <td>30</td>\n  </tr>\n</table>",
+    "acceptedAnswers": ["<th>Name</th>", "<th>Age</th>"],
+    "hints": [
+      "Table headers should use <th> tags, not <td>",
+      "Replace the first row's <td> tags with <th>"
+    ],
+    "maxScore": 140
+  },
+  {
+    "id": 10,
+    "name": "Script Placement",
+    "description": "<p>A script tag is in the <head> trying to access DOM elements before they load.</p><p><strong>Task:</strong> Add the 'defer' attribute to fix the timing issue</p>",
+    "code": "<head>\n  <script src=\"app.js\"></script>\n</head>\n<body>\n  <div id=\"app\"></div>\n</body>",
+    "acceptedAnswers": ["defer", "<script src=\"app.js\" defer>"],
+    "hints": [
+      "Scripts in <head> run before the DOM is ready",
+      "The 'defer' attribute makes scripts wait for DOM to load"
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 11,
+    "name": "Image Alt Text",
+    "description": "<p>An important image is missing alt text, making it inaccessible.</p><p><strong>Task:</strong> Add appropriate alt text: 'Company logo'</p>",
+    "code": "<img src=\"logo.png\">",
+    "acceptedAnswers": ["alt=\"Company logo\"", "alt='Company logo'"],
+    "hints": [
+      "All images need alt attributes for accessibility",
+      "Use alt=\"Company logo\""
+    ],
+    "maxScore": 150
+  },
+  {
+    "id": 12,
+    "name": "List Structure",
+    "description": "<p>List items are not wrapped in a proper list container.</p><p><strong>Task:</strong> Wrap the <li> elements in a <ul> tag</p>",
+    "code": "<li>Item 1</li>\n<li>Item 2</li>\n<li>Item 3</li>",
+    "acceptedAnswers": ["<ul>", "</ul>"],
+    "hints": [
+      "List items must be inside <ul> or <ol> tags",
+      "Add <ul> before and </ul> after the items"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 13,
+    "name": "Semantic Heading",
+    "description": "<p>A heading is using <div> with a class instead of semantic HTML.</p><p><strong>Task:</strong> Replace with proper <h1> tag</p>",
+    "code": "<div class=\"heading\">Welcome</div>",
+    "acceptedAnswers": ["<h1>Welcome</h1>", "<h1>"],
+    "hints": [
+      "Semantic HTML improves accessibility and SEO",
+      "Replace the div with <h1>Welcome</h1>"
+    ],
+    "maxScore": 160
+  },
+  {
+    "id": 14,
+    "name": "Input Label Association",
+    "description": "<p>A form input is not associated with its label.</p><p><strong>Task:</strong> Add proper id and for attributes to connect them</p>",
+    "code": "<label>Email:</label>\n<input type=\"email\" name=\"email\">",
+    "acceptedAnswers": ["id=\"email\"", "for=\"email\""],
+    "mustInclude": ["id=", "for="],
+    "hints": [
+      "Labels need 'for' attribute matching input 'id'",
+      "Add id=\"email\" to input and for=\"email\" to label"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 15,
+    "name": "Required Attribute",
+    "description": "<p>A critical form field allows empty submission.</p><p><strong>Task:</strong> Add the required attribute to the password input</p>",
+    "code": "<form>\n  <input type=\"password\" name=\"password\">\n  <button>Login</button>\n</form>",
+    "acceptedAnswers": ["required", "<input type=\"password\" name=\"password\" required>"],
+    "hints": [
+      "HTML5 has a 'required' attribute for form validation",
+      "Add 'required' to the input tag"
+    ],
+    "maxScore": 170
+  },
+  {
+    "id": 16,
+    "name": "Iframe Security",
+    "description": "<p>An iframe lacks security attributes, creating a vulnerability.</p><p><strong>Task:</strong> Add sandbox attribute to restrict iframe permissions</p>",
+    "code": "<iframe src=\"untrusted-site.com\"></iframe>",
+    "acceptedAnswers": ["sandbox", "sandbox=\"\""],
+    "hints": [
+      "Iframes should use the 'sandbox' attribute for security",
+      "Add sandbox=\"\" to restrict all permissions by default"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 17,
+    "name": "Doctype Declaration",
+    "description": "<p>The HTML document is missing its DOCTYPE, causing quirks mode.</p><p><strong>Task:</strong> Add the HTML5 DOCTYPE at the very beginning</p>",
+    "code": "<html>\n<head>\n  <title>Page</title>\n</head>\n<body></body>\n</html>",
+    "acceptedAnswers": ["<!DOCTYPE html>", "<!doctype html>"],
+    "hints": [
+      "Every HTML document should start with DOCTYPE",
+      "HTML5 uses: <!DOCTYPE html>"
+    ],
+    "maxScore": 180
+  },
+  {
+    "id": 18,
+    "name": "Button Type",
+    "description": "<p>A button inside a form unexpectedly submits the form.</p><p><strong>Task:</strong> Add type=\"button\" to prevent default submit behavior</p>",
+    "code": "<form>\n  <input type=\"text\">\n  <button onclick=\"validate()\">Check</button>\n</form>",
+    "acceptedAnswers": ["type=\"button\"", "<button type=\"button\""],
+    "hints": [
+      "Buttons in forms default to type=\"submit\"",
+      "Add type=\"button\" to prevent form submission"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 19,
+    "name": "Character Encoding",
+    "description": "<p>Special characters display incorrectly due to missing charset.</p><p><strong>Task:</strong> Add the UTF-8 meta charset tag in <head></p>",
+    "code": "<head>\n  <title>Page</title>\n</head>",
+    "acceptedAnswers": ["<meta charset=\"UTF-8\">", "<meta charset=\"utf-8\">"],
+    "hints": [
+      "Character encoding should be declared in <head>",
+      "Use: <meta charset=\"UTF-8\">"
+    ],
+    "maxScore": 190
+  },
+  {
+    "id": 20,
+    "name": "Semantic Structure",
+    "description": "<p>The page uses generic divs instead of semantic HTML5 elements.</p><p><strong>Task:</strong> Identify which semantic tag should replace <div class=\"top\"> - choose from: header, nav, main, footer</p>",
+    "code": "<div class=\"top\">\n  <h1>Site Name</h1>\n  <p>Tagline</p>\n</div>\n<div class=\"content\">...</div>",
+    "acceptedAnswers": ["header", "<header>"],
+    "hints": [
+      "HTML5 semantic elements describe their purpose",
+      "The top section with site branding should use <header>"
+    ],
+    "maxScore": 200,
+    "errorMessage": "Think about what semantic tag best describes the page's top section with branding."
+  }
+]

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 ESCAPE ROOM — Multi-Language Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="404 ESCAPE ROOM">404 ESCAPE ROOM</h1>
+            </div>
+            <div class="terminal-box">
+                <p class="error-text">ERROR: You are trapped in a broken website universe.</p>
+                <p class="system-text">SYSTEM: Debug your way out or remain lost forever.</p>
+                <p class="warning-text">WARNING: Only developers with real knowledge can escape.</p>
+            </div>
+            <button class="btn btn-primary" id="start-btn">INITIALIZE ESCAPE SEQUENCE</button>
+            <div class="system-log">
+                <p>[SYSTEM] Analyzing skillset...</p>
+                <p>[SYSTEM] Language modules loaded: 6</p>
+                <p>[SYSTEM] Total escape paths: 120 levels</p>
+            </div>
+        </div>
+
+        <!-- Language Selection Screen -->
+        <div id="language-screen" class="screen">
+            <h2 class="screen-title">SELECT YOUR ESCAPE PATH</h2>
+            <p class="subtitle">Choose the language universe you'll debug through</p>
+            
+            <div class="language-grid">
+                <div class="language-card" data-lang="html">
+                    <div class="card-header">
+                        <span class="lang-icon">&lt;/&gt;</span>
+                        <h3>HTML</h3>
+                    </div>
+                    <p class="card-desc">Structural Chaos</p>
+                    <p class="card-detail">Fix broken markup, semantic errors, and DOM mysteries</p>
+                    <div class="card-stats">
+                        <span>20 Levels</span>
+                        <span class="difficulty">★★☆☆☆</span>
+                    </div>
+                </div>
+
+                <div class="language-card" data-lang="css">
+                    <div class="card-header">
+                        <span class="lang-icon">{*}</span>
+                        <h3>CSS</h3>
+                    </div>
+                    <p class="card-desc">Visual Deception</p>
+                    <p class="card-detail">Solve layout traps, hidden elements, and style bugs</p>
+                    <div class="card-stats">
+                        <span>20 Levels</span>
+                        <span class="difficulty">★★★☆☆</span>
+                    </div>
+                </div>
+
+                <div class="language-card" data-lang="javascript">
+                    <div class="card-header">
+                        <span class="lang-icon">ƒ()</span>
+                        <h3>JAVASCRIPT</h3>
+                    </div>
+                    <p class="card-desc">Logic Warfare</p>
+                    <p class="card-detail">Debug async chaos, scope traps, and event puzzles</p>
+                    <div class="card-stats">
+                        <span>20 Levels</span>
+                        <span class="difficulty">★★★★☆</span>
+                    </div>
+                </div>
+
+                <div class="language-card" data-lang="python">
+                    <div class="card-header">
+                        <span class="lang-icon">🐍</span>
+                        <h3>PYTHON</h3>
+                    </div>
+                    <p class="card-desc">Backend Mysteries</p>
+                    <p class="card-detail">Fix indentation, scope bugs, and algorithm errors</p>
+                    <div class="card-stats">
+                        <span>20 Levels</span>
+                        <span class="difficulty">★★★☆☆</span>
+                    </div>
+                </div>
+
+                <div class="language-card" data-lang="sql">
+                    <div class="card-header">
+                        <span class="lang-icon">⚡</span>
+                        <h3>SQL</h3>
+                    </div>
+                    <p class="card-desc">Data Logic Traps</p>
+                    <p class="card-detail">Correct queries, joins, and aggregation puzzles</p>
+                    <div class="card-stats">
+                        <span>20 Levels</span>
+                        <span class="difficulty">★★★★☆</span>
+                    </div>
+                </div>
+
+                <div class="language-card" data-lang="networking">
+                    <div class="card-header">
+                        <span class="lang-icon">⚙</span>
+                        <h3>HTTP/NET</h3>
+                    </div>
+                    <p class="card-desc">Protocol Chaos</p>
+                    <p class="card-detail">Debug requests, status codes, and API mysteries</p>
+                    <div class="card-stats">
+                        <span>20 Levels</span>
+                        <span class="difficulty">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level Map Screen -->
+        <div id="map-screen" class="screen">
+            <div class="map-header">
+                <h2 id="map-title">ESCAPE MAP</h2>
+                <div class="map-stats">
+                    <span>Progress: <span id="progress-count">0</span>/20</span>
+                    <span>Score: <span id="score-count">0</span></span>
+                </div>
+            </div>
+            
+            <div id="level-grid" class="level-grid"></div>
+            
+            <button class="btn btn-secondary" id="back-to-lang">Change Language</button>
+        </div>
+
+        <!-- Puzzle Screen -->
+        <div id="puzzle-screen" class="screen">
+            <div class="puzzle-header">
+                <div class="puzzle-info">
+                    <span id="level-number">Level 1</span>
+                    <span id="level-title">Debug Challenge</span>
+                </div>
+                <div class="puzzle-actions">
+                    <button class="btn-icon" id="hint-btn" title="Get Hint">💡</button>
+                    <button class="btn-icon" id="exit-level">✕</button>
+                </div>
+            </div>
+
+            <div class="puzzle-content">
+                <div class="puzzle-description" id="puzzle-desc"></div>
+                
+                <div class="code-container" id="code-container">
+                    <div class="code-header">
+                        <span class="code-lang" id="code-lang-label">CODE</span>
+                        <span class="code-status" id="code-status">BROKEN</span>
+                    </div>
+                    <pre class="code-block"><code id="code-display"></code></pre>
+                </div>
+
+                <div class="solution-area">
+                    <label for="solution-input" class="solution-label">YOUR SOLUTION:</label>
+                    <textarea id="solution-input" class="solution-input" placeholder="Enter your fix here..."></textarea>
+                    <button class="btn btn-primary" id="submit-solution">EXECUTE FIX</button>
+                </div>
+
+                <div class="hint-panel" id="hint-panel">
+                    <div class="hint-header">HINT SYSTEM</div>
+                    <div class="hint-content" id="hint-content"></div>
+                    <p class="hint-warning">Using hints reduces your score</p>
+                </div>
+            </div>
+
+            <div class="terminal-output" id="terminal-output">
+                <div class="terminal-header">[SYSTEM LOG]</div>
+                <div class="terminal-content" id="terminal-log"></div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="modal">
+            <div class="modal-content">
+                <h2 class="modal-title">LEVEL COMPLETE</h2>
+                <div class="modal-stats" id="level-stats"></div>
+                <button class="btn btn-primary" id="next-level-btn">NEXT CHALLENGE</button>
+                <button class="btn btn-secondary" id="back-to-map">VIEW MAP</button>
+            </div>
+        </div>
+
+        <!-- Escape Success Screen -->
+        <div id="escape-screen" class="screen">
+            <div class="escape-content">
+                <h1 class="glitch" data-text="ESCAPE SUCCESSFUL">ESCAPE SUCCESSFUL</h1>
+                <div class="escape-stats">
+                    <p>You have debugged your way out of the <span id="final-lang"></span> universe.</p>
+                    <div class="final-stats">
+                        <p>Total Score: <span id="final-score"></span></p>
+                        <p>Levels Completed: <span id="final-levels"></span>/20</p>
+                        <p>Hints Used: <span id="final-hints"></span></p>
+                    </div>
+                </div>
+                <div class="escape-actions">
+                    <button class="btn btn-primary" id="try-another">TRY ANOTHER LANGUAGE</button>
+                    <button class="btn btn-secondary" id="restart-game">RESTART</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
