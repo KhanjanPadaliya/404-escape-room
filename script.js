@@ -98,7 +98,10 @@ async function loadLevelMap(language) {
         addLog(`ERROR: Could not load ${language} levels. Is the server running?`, 'error');
         
         // Show helpful message
-        alert(`Cannot load levels. Please ensure:\n\n1. Server is running (npm start)\n2. Server is on http://localhost:3000\n3. levels/${language}.json file exists\n\nCheck console for details.`);
+        alert(`Cannot load levels.
+Please ensure backend is reachable.
+Check console for details.`);
+
     }
 }
 
