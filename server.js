@@ -1,3 +1,6 @@
+const API_BASE = "https://four04-escape-room.onrender.com";
+
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');

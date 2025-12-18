@@ -78,7 +78,8 @@ function initializeStartScreen() {
 async function loadLevelMap(language) {
     try {
         // Try to fetch from server
-        const response = await fetch(`http://localhost:3000/levels/${language}`);
+        const response = await fetch(`${API_BASE}/levels/${language}`)
+
         
         if (!response.ok) {
             throw new Error('Server not responding');
@@ -204,7 +205,8 @@ async function submitSolution() {
     addLog('Executing fix...', 'info');
     
     try {
-        const response = await fetch('http://localhost:3000/validate-solution', {
+        const response = await fetch(`${API_BASE}/validate-solution`, {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
