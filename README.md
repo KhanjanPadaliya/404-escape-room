@@ -487,5 +487,6 @@ If you find this project useful, please consider giving it a ⭐ on GitHub!
 
 [⬆ Back to Top](#404-escape-room--multi-language-edition-)
 
-</div>#   4 0 4 - e s c a p e - r o o m  
+</div>#   4 0 4 - e s c a p e - r o o m 
+ 
  
