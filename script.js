@@ -1,3 +1,6 @@
+const API_BASE = "https://four04-escape-room.onrender.com";
+
+
 // ==========================================
 // GAME STATE MANAGEMENT
 // ==========================================
